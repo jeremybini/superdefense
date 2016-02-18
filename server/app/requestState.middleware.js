@@ -8,18 +8,6 @@ var secrets = require('../../config/keys');
 var bodyParser = require('body-parser');
 var User = require('../api/users/user.model');
 
-// router.use(function (req, res, next) {
-// 	var bodyString = '';
-// 	req.on('data', function (chunk) {
-// 		bodyString += chunk;
-// 	});
-// 	req.on('end', function () {
-// 		bodyString = bodyString || '{}';
-// 		req.body = eval('(' + bodyString + ')');
-// 		next();
-// 	});
-// });
-
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
