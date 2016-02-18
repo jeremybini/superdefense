@@ -4,9 +4,9 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird'); 
 Promise.promisifyAll(mongoose);
 
-var databaseURI = 'mongodb://localhost:27017/auther';
+var secrets = require('../config/keys');
 
-var db = mongoose.connect(databaseURI).connection;
+var db = mongoose.connect(secrets.databaseURI).connection;
 
 db.on('open', function () {
 	console.log('Database connection successfully opened');
