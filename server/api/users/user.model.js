@@ -1,4 +1,4 @@
-'use strict'; 
+'use strict';
 
 var mongoose = require('mongoose'),
 	shortid = require('shortid'),
@@ -24,24 +24,40 @@ var User = new mongoose.Schema({
 		required: true,
 		unique: true
 	},
-	password: String,
+	password: {
+		type: String,
+		select: false
+	},
+	salt: {
+		type: String,
+		select: false
+	},
 	google: {
 		id: String,
 		name: String,
 		email: String,
-		token: String
+		token: {
+			type: String,
+			select: false
+		}
 	},
 	twitter: {
 		id: String,
 		name: String,
 		email: String,
-		token: String
+		token: {
+			type: String,
+			select: false
+		}
 	},
 	github: {
 		id: String,
 		name: String,
 		email: String,
-		token: String
+		token: {
+			type: String,
+			select: false
+		}
 	},
 	isAdmin: {
 		type: Boolean,
@@ -52,5 +68,6 @@ var User = new mongoose.Schema({
 User.methods.getStories = function () {
 	return Story.find({author: this._id}).exec();
 };
+
 
 module.exports = db.model('User', User);
